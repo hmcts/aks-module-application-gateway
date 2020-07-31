@@ -1,0 +1,10 @@
+### Terraform template
+# Compiled files
+
+*.tfstate.*.backup
+*.tfstate.backup
+# Module directory
+.terraform/
+
+# Variable values for development
+terraform.tfvars
