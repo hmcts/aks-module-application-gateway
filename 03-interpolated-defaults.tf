@@ -38,4 +38,6 @@ data "azurerm_subnet" "application_gateway_subnet" {
 
   virtual_network_name = "ss_aks_sbox_network"                #var.network_name
   resource_group_name  = "ss_aks_sbox_network_resource_group" #var.network_resource_group_name
+
+  depends_on = [azurerm_virtual_network, azurerm_public_ip]
 }
