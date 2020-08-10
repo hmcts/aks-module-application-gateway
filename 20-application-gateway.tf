@@ -37,7 +37,7 @@ resource "azurerm_application_gateway" "network" {
   }
 
   dynamic "backend_address_pool" {
-    for_each = [for b in local.backend_apps : {
+    for_each = [for b in var.backend_apps : {
       name = "${b.name}-beap"
       ip_addresses = b.ip_addresses
     }]
@@ -49,7 +49,7 @@ resource "azurerm_application_gateway" "network" {
   }
 
   dynamic "backend_http_settings" {
-    for_each = [for b in local.backend_apps : {
+    for_each = [for b in var.backend_apps : {
       name = "${b.name}-be-htst"
     }]
 
@@ -66,7 +66,7 @@ resource "azurerm_application_gateway" "network" {
   }
 
     dynamic "http_listener" {
-    for_each = [for b in local.backend_apps : {
+    for_each = [for b in var.backend_apps : {
       name = "${b.name}-httplstn"
       fqdn = b.fqdn
     }]
@@ -82,7 +82,7 @@ resource "azurerm_application_gateway" "network" {
   }
 
   dynamic "request_routing_rule" {
-    for_each = [for b in local.backend_apps : {
+    for_each = [for b in var.backend_apps : {
       name         = "${b.name}-rqrt"
       listener     = "${b.name}-httplstn"
       httpsettings = "${b.name}-be-htst"
@@ -100,7 +100,7 @@ resource "azurerm_application_gateway" "network" {
   }
 
   dynamic "probe" {
-    for_each = [for b in local.backend_apps : {
+    for_each = [for b in var.backend_apps : {
       name         = "${b.name}-be-htst"
       listener     = "${b.name}-httplstn"
       httpsettings = "${b.name}-be-htst"

@@ -2,7 +2,12 @@ data "azurerm_client_config" "current" {}
 
 locals {
   slug_location = lower(replace(var.location, " ", "."))
+
+  frontend_port_name             = format("%s_application_gateway_%s_feport", var.network_shortname, var.deploy_environment)
+  frontend_ip_configuration_name = format("%s_application_gateway_%s_feip", var.network_shortname, var.deploy_environment)
+
 }
+
 
 data "null_data_source" "network_defaults" {
   inputs = {
