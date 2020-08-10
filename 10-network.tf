@@ -1,7 +1,7 @@
 # Public Ip 
 resource "azurerm_public_ip" "appgw_pip" {
   name                = format("%s-%s-appgw-pip", var.network_shortname, var.deploy_environment)
-  location            = var.network_location
+  location            = var.location
   resource_group_name = var.resource_group_name
   allocation_method   = "Static"
   sku                 = "Standard"
