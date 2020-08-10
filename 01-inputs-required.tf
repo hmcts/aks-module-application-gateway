@@ -1,10 +1,9 @@
 variable "resource_group_name" {}
 variable "deploy_environment" {}
 
-variable "network_resource_group_name" {}
 variable "network_name" {}
 variable "network_shortname" {}
-variable "network_location" {}
+variable "location" {}
 
 variable "tag_project_name" {}
 variable "tag_service" {}

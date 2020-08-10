@@ -1,7 +1,7 @@
 data "azurerm_client_config" "current" {}
 
 locals {
-  slug_location = lower(replace(var.network_location, " ", "."))
+  slug_location = lower(replace(var.location, " ", "."))
 }
 
 data "null_data_source" "network_defaults" {
@@ -37,6 +37,6 @@ data "azurerm_subnet" "application_gateway_subnet" {
   )
 
   virtual_network_name = var.network_name
-  resource_group_name  = var.network_resource_group_name
+  resource_group_name  = var.resource_group_name
 
 }

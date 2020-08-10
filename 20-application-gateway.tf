@@ -1,7 +1,7 @@
 resource "azurerm_application_gateway" "network" {
   name = format("%s_application_gateway_%s", var.network_shortname, var.deploy_environment)
   resource_group_name = var.resource_group_name
-  location            = var.network_location
+  location            = var.location
 
   sku {
     name     = "Standard_v2"
