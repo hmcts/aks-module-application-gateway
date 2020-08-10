@@ -32,7 +32,7 @@ resource "azurerm_application_gateway" "network" {
   frontend_ip_configuration {
     name                 = "${local.frontend_ip_configuration_name}_private"
     private_ip_address_allocation = "Static"
-    private_ip_address   = "10.100.8.249"
+    private_ip_address   = cidrhost(var.application_gateway_subnet_cidr_blocks, 123)
     subnet_id     = data.azurerm_subnet.application_gateway_subnet.id
   }
 
